@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Hitbox.gd"
+}, {
 "base": "Control",
 "class": "Main",
 "language": "GDScript",
 "path": "res://Main.gd"
 } ]
 _global_script_class_icons={
+"Hitbox": "",
 "Main": ""
 }
 
@@ -30,7 +36,7 @@ window/size/width=1080
 window/size/height=1920
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
-window/stretch/shrink=0.36
+window/stretch/aspect="keep"
 
 [gui]
 
