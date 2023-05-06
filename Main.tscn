@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Layer 2.png" type="Texture" id=1]
 [ext_resource path="res://Arrow.gd" type="Script" id=2]
@@ -9,7 +9,7 @@
 
 [sub_resource type="Animation" id=4]
 resource_name = "EndScene"
-length = 6.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("End/EndContainer:rect_position")
 tracks/0/interp = 1
@@ -17,7 +17,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 5.5, 6 ),
+"times": PoolRealArray( 0, 0.5, 6, 6.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -1960 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -1960 ) ]
@@ -89,6 +89,97 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Slider/CollisionProgress:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 465.437, 82.6205 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Slider/CollisionProgress:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slider/CollisionProgress:value")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "CollisionProgress"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Slider/CollisionProgress:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 33.0, 66.0, 100.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Slider/CollisionProgress:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 465.437, 82.6205 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slider/CollisionProgress:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Slider/CollisionProgress:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 29, 29 )
@@ -121,6 +212,10 @@ texture = ExtResource( 1 )
 anims/EndScene = SubResource( 4 )
 anims/Nansen = SubResource( 6 )
 anims/RESET = SubResource( 5 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/CollisionProgress = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
 [node name="Slider" type="Node2D" parent="."]
 
@@ -168,7 +263,6 @@ margin_left = 465.437
 margin_top = 82.6205
 margin_right = 637.437
 margin_bottom = 254.62
-max_value = 3.0
 texture_progress = ExtResource( 6 )
 fill_mode = 4
 

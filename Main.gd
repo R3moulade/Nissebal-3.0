@@ -13,8 +13,8 @@ onready var endTimer := $End/EndTimer
 onready var hudTimer := $HUD/HUDContainer/Timer
 onready var hudScore := $HUD/HUDContainer/Score
 onready var animations := $AnimationPlayer
-var time_now = 0
-var time_start = 0
+onready var animations2 := $AnimationPlayer2
+
 
 func _ready():
 	randomize()
@@ -22,19 +22,9 @@ func _ready():
 	timerLabel.hide()
 	hudContainer.hide()
 	self.score = -10
-	$Slider/CollisionProgress.value = 0.0
-	
 	
 func _process(delta: float) -> void:
-	time_now = OS.get_unix_time()
-	var elapsed = time_now - time_start
-	var seconds = elapsed % 60
-	var str_elapsed = "%2.0d" % seconds
-	print("elapsed : ", str_elapsed)
-	
 	hudTimer.text = str(int(countdownTimer.time_left))
-	$Slider/CollisionProgress.value = str_elapsed
-
 #func _set(property: String, value) -> bool:
 	
 func _on_CollisionTimer_timeout():
@@ -51,6 +41,7 @@ func _on_CollisionTimer_timeout():
 		#updates the score. self accesses the setter method
 		self.score += 10
 		#character jumps
+		animations2.play("RESET")
 		animations.play("Nansen")
 		
 		#Removes the hitbox that was collisioned
@@ -75,13 +66,13 @@ func set_highscore(hs_value):
 func _on_Hitbox_area_entered(area: Area2D) -> void:
 	collisionTimer.start()
 	timerLabel.show()
-	time_start = OS.get_unix_time()
+	animations2.play("CollisionProgress")
 
 #when the arrow leaves the hitbox, restart the timer
 func _on_Hitbox_area_exited(area: Area2D) -> void:
 	collisionTimer.stop()
 	timerLabel.hide()
-	time_start = 0
+	animations2.play("RESET")
 
 #when the game is over
 func _on_CountdownTimer_timeout() -> void:
