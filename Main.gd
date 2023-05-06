@@ -6,19 +6,20 @@ var hitbox_spawn_location
 var score = 0 setget set_score
 var highscore = 0 setget set_highscore
 onready var timerLabel := $Slider/TimerLabel
-onready var hudContainer := $HUD/HUDContainer
+onready var hudContainer := $HUD/HUDGame
+onready var hudStandby := $HUD/HUDStandby
 onready var countdownTimer := $CountdownTimer
 onready var collisionTimer := $Slider/CollisionTimer
 onready var endTimer := $End/EndTimer
-onready var hudTimer := $HUD/HUDContainer/Timer
-onready var hudScore := $HUD/HUDContainer/Score
+onready var hudTimer := $HUD/HUDGame/Timer
+onready var hudScore := $HUD/HUDGame/Score
 onready var animations := $AnimationPlayer
 onready var animations2 := $AnimationPlayer2
 
 
 func _ready():
 	randomize()
-	hitbox_spawn_location = $Slider/HitboxPath/HitboxSpawnLocation
+	hitbox_spawn_location = $Slider/Slider/HitboxPath/HitboxSpawnLocation
 	timerLabel.hide()
 	hudContainer.hide()
 	self.score = -10
@@ -58,6 +59,7 @@ func set_score(s_value):
 		countdownTimer.start()
 		countdownTimer.one_shot = true
 		hudContainer.show()
+		hudStandby.hide()
 
 func set_highscore(hs_value):
 	highscore = hs_value
@@ -92,3 +94,4 @@ func _on_EndTimer_timeout() -> void:
 	self.score = -10
 	endTimer.one_shot = false
 	hudContainer.hide()
+	hudStandby.show()
