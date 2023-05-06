@@ -24,7 +24,7 @@ func _ready():
 	self.score = -10
 	
 func _process(delta: float) -> void:
-	hudTimer.text = str(int(countdownTimer.time_left))
+	hudTimer.text = "0:" + str(int(countdownTimer.time_left))
 #func _set(property: String, value) -> bool:
 	
 func _on_CollisionTimer_timeout():
