@@ -17,4 +17,4 @@ func _process(delta):
 	position += direction * speed * delta
 	
 	#Limits the arrow's position to the parent (the slider)
-	position.x = clamp(position.x, 0, slider_size.x)
+	position.x = clamp(position.x, 86, slider_size.x - 86)

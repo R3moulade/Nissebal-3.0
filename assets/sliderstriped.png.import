@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/christmasborder.png-0e7290199c143270d01fd091c6ec049e.stex"
+path="res://.import/sliderstriped.png-1348aca0a014c3f13582442ae92fd4e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://christmasborder.png"
-dest_files=[ "res://.import/christmasborder.png-0e7290199c143270d01fd091c6ec049e.stex" ]
+source_file="res://assets/sliderstriped.png"
+dest_files=[ "res://.import/sliderstriped.png-1348aca0a014c3f13582442ae92fd4e9.stex" ]
 
 [params]
 

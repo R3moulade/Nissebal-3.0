@@ -15,6 +15,8 @@ onready var hudTimer := $HUD/HUDGame/Timer
 onready var hudScore := $HUD/HUDGame/Score
 onready var animations := $AnimationPlayer
 onready var animations2 := $AnimationPlayer2
+onready var animations3 := $AnimationPlayer3
+onready var animations4 := $AnimationPlayer4
 
 
 func _ready():
@@ -60,6 +62,9 @@ func set_score(s_value):
 		countdownTimer.one_shot = true
 		hudContainer.show()
 		hudStandby.hide()
+		animations3.play("GameStart")
+		animations4.play("CountdownProgress")
+		
 
 func set_highscore(hs_value):
 	highscore = hs_value
@@ -89,9 +94,12 @@ func _on_CountdownTimer_timeout() -> void:
 	else:
 		$End/EndContainer/Highscore.set_text("Highscore \n" + str(self.highscore))
 		
+
 #when the full loop of the game is over
 func _on_EndTimer_timeout() -> void:
 	self.score = -10
 	endTimer.one_shot = false
 	hudContainer.hide()
 	hudStandby.show()
+
+
