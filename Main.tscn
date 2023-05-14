@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/Layer 2.png" type="Texture" id=1]
 [ext_resource path="res://Arrow.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://shoeprint.png" type="Texture" id=9]
 [ext_resource path="res://assets/nissebalbanner.png" type="Texture" id=10]
 [ext_resource path="res://assets/IMG_0899.png" type="Texture" id=11]
-[ext_resource path="res://assets/orchestra-spritesheet.png" type="Texture" id=12]
+[ext_resource path="res://assets/orchestra.png" type="Texture" id=12]
 [ext_resource path="res://assets/scoretimer.png" type="Texture" id=13]
 [ext_resource path="res://assets/ollebolle.png" type="Texture" id=14]
 [ext_resource path="res://assets/sliderwhite.png" type="Texture" id=15]
@@ -19,24 +19,6 @@
 [ext_resource path="res://assets/sliderstriped_sheet1.png" type="Texture" id=17]
 [ext_resource path="res://assets/sliderstriped_sheet2.png" type="Texture" id=18]
 [ext_resource path="res://CountdownSlider.gd" type="Script" id=19]
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 1287, 432 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 12 )
-region = Rect2( 0, 432, 1287, 432 )
-
-[sub_resource type="SpriteFrames" id=16]
-animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [sub_resource type="Animation" id=4]
 resource_name = "EndScene"
@@ -142,66 +124,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "GameStart"
-length = 1.2
+length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("HUD/HUDGame/ScoreTimer:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Background/Orchestra:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1, 1.2 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 540.172, 2199.92 ), Vector2( 540.284, 1562.98 ), Vector2( 539.732, 1629.34 ), Vector2( 540.284, 1608.92 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HUD/HUDGame/Timer:rect_position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 771.5, 2261.16 ), Vector2( 771.5, 1624.22 ), Vector2( 771.5, 1690.58 ), Vector2( 771.5, 1670.16 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("HUD/HUDGame/Timer:rect_rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/HUDGame/Score:rect_position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.8, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 175.461, 2261.16 ), Vector2( 175.461, 1620.61 ), Vector2( 175.461, 1686.97 ), Vector2( 175.461, 1666.55 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("HUD/HUDGame/Score:rect_rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( 539.969, 2210.88 ), Vector2( 530.022, 1612.11 ), Vector2( 530.022, 1646.13 ), Vector2( 530.022, 1633.76 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -265,6 +199,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/Orchestra:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 539.969, 2210.88 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -360,10 +306,10 @@ margin_right = 1080.0
 margin_bottom = 1920.0
 texture = ExtResource( 11 )
 
-[node name="Orchestra" type="AnimatedSprite" parent="Background"]
-position = Vector2( 543.472, 1269.85 )
-scale = Vector2( 0.85191, 0.85191 )
-frames = SubResource( 16 )
+[node name="Orchestra" type="Sprite" parent="Background"]
+position = Vector2( 539.969, 2210.88 )
+scale = Vector2( 1.00032, 1.00032 )
+texture = ExtResource( 12 )
 
 [node name="Character" type="Node2D" parent="."]
 
@@ -454,6 +400,7 @@ fill_mode = 3
 tint_progress = Color( 1, 0, 0, 1 )
 
 [node name="ValueSlider" type="HSlider" parent="Slider/Slider/CountdownSlider"]
+visible = false
 margin_left = 331.656
 margin_top = 549.0
 margin_right = 768.656
@@ -566,7 +513,7 @@ valign = 1
 [node name="End" type="Node" parent="."]
 
 [node name="EndTimer" type="Timer" parent="End"]
-wait_time = 10.0
+wait_time = 9.5
 one_shot = true
 
 [node name="EndContainer" type="TextureRect" parent="End"]

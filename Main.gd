@@ -101,5 +101,7 @@ func _on_EndTimer_timeout() -> void:
 	endTimer.one_shot = false
 	hudContainer.hide()
 	hudStandby.show()
+	animations3.play("RESET")
+	animations4.play("RESET")
 
 
