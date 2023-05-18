@@ -21,6 +21,7 @@ onready var hitbox := $Slider/Slider/HitboxPath/HitboxSpawnLocation/Hitbox
 onready var fiveSecondsLeft := $Slider/CountdownTimer5sec
 onready var between := $Slider/Slider/HitboxPath/HitboxSpawnLocation/Hitbox/Between
 onready var middle := $Slider/Slider/HitboxPath/HitboxSpawnLocation/Hitbox/Middle
+onready var scoreIncrease := $Slider/ScoreIncrease
 
 
 func _ready():
@@ -49,12 +50,17 @@ func _on_CollisionTimer_timeout():
 		
 		#updates the score. self accesses the setter method
 		if score != -10:
+			animations3.play("ScoreIncrease")
+			
 			if arrow.overlaps_area(between) && !arrow.overlaps_area(middle):
 				self.score += 15
+				scoreIncrease.text = "+15"
 			elif arrow.overlaps_area(middle):
 				self.score += 30
+				scoreIncrease.text = "+30"
 			else:
 				self.score += 5
+				scoreIncrease.text = "+5"
 		else:
 			self.score = 0
 		#character jumps

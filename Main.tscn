@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/Background/endscreen.png" type="Texture" id=1]
 [ext_resource path="res://Arrow.gd" type="Script" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/HUD/slider.png" type="Texture" id=8]
 [ext_resource path="res://assets/Inter/static/Inter-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/HUD/nissebalbanner.png" type="Texture" id=10]
-[ext_resource path="res://assets/Background/IMG_0899.png" type="Texture" id=11]
+[ext_resource path="res://assets/Background/IMG_0907.PNG" type="Texture" id=11]
 [ext_resource path="res://assets/Characters/orchestra.png" type="Texture" id=12]
 [ext_resource path="res://assets/HUD/scoretimer.png" type="Texture" id=13]
 [ext_resource path="res://assets/HUD/ollebolle.png" type="Texture" id=14]
@@ -271,14 +271,10 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "GameStart"
-length = 0.8
-
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=19]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/Orchestra:position")
+tracks/0/path = NodePath("Slider/ScoreIncrease:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -287,7 +283,47 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 539.969, 2210.88 ) ]
+"values": [ Vector2( 504, 231.91 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slider/ScoreIncrease:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "ScoreIncrease"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Slider/ScoreIncrease:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 500, 228.91 ), Vector2( 500, 180.91 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slider/ScoreIncrease:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -492,6 +528,10 @@ extents = Vector2( 1.7906, 88.2424 )
 size = 150
 font_data = ExtResource( 20 )
 
+[sub_resource type="DynamicFont" id=21]
+size = 40
+font_data = ExtResource( 9 )
+
 [sub_resource type="DynamicFont" id=14]
 size = 48
 font_data = ExtResource( 20 )
@@ -543,8 +583,8 @@ anims/CollisionProgress = SubResource( 7 )
 anims/RESET = SubResource( 8 )
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
-anims/GameStart = SubResource( 9 )
-anims/RESET = SubResource( 10 )
+anims/RESET = SubResource( 19 )
+anims/ScoreIncrease = SubResource( 20 )
 
 [node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
 autoplay = "Bopping"
@@ -669,6 +709,16 @@ rect_pivot_offset = Vector2( 672.799, 87.7539 )
 custom_fonts/font = SubResource( 18 )
 text = "5"
 align = 1
+
+[node name="ScoreIncrease" type="Label" parent="Slider"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 504.0
+margin_top = 231.91
+margin_right = 580.0
+margin_bottom = 280.911
+rect_pivot_offset = Vector2( 39, 23 )
+custom_fonts/font = SubResource( 21 )
+text = "+30"
 
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 30.0
