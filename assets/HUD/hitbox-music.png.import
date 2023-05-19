@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.PNG-0e0fa9ad6b6ab832dae45c6c26e984fa.stex"
+path="res://.import/hitbox-music.png-0962eccce7e2f50e427b235894d8e203.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/background.PNG"
-dest_files=[ "res://.import/background.PNG-0e0fa9ad6b6ab832dae45c6c26e984fa.stex" ]
+source_file="res://assets/HUD/hitbox-music.png"
+dest_files=[ "res://.import/hitbox-music.png-0962eccce7e2f50e427b235894d8e203.stex" ]
 
 [params]
 

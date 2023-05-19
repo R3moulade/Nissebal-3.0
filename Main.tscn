@@ -1,18 +1,17 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/Background/endscreen.png" type="Texture" id=1]
 [ext_resource path="res://Arrow.gd" type="Script" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
-[ext_resource path="res://assets/HUD/red-arrow.png" type="Texture" id=4]
+[ext_resource path="res://assets/HUD/julehjerte-arrow.png" type="Texture" id=4]
 [ext_resource path="res://Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/HUD/sliderstriped_sheet3.png" type="Texture" id=6]
 [ext_resource path="res://assets/Characters/Nansen.png" type="Texture" id=7]
 [ext_resource path="res://assets/HUD/slider.png" type="Texture" id=8]
 [ext_resource path="res://assets/Inter/static/Inter-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/HUD/nissebalbanner.png" type="Texture" id=10]
-[ext_resource path="res://assets/Background/IMG_0907.PNG" type="Texture" id=11]
+[ext_resource path="res://assets/Background/background.PNG" type="Texture" id=11]
 [ext_resource path="res://assets/Characters/orchestra.png" type="Texture" id=12]
-[ext_resource path="res://assets/HUD/scoretimer.png" type="Texture" id=13]
 [ext_resource path="res://assets/HUD/ollebolle.png" type="Texture" id=14]
 [ext_resource path="res://assets/HUD/sliderwhite.png" type="Texture" id=15]
 [ext_resource path="res://assets/HUD/sliderstriped_sheet4.png" type="Texture" id=16]
@@ -20,6 +19,7 @@
 [ext_resource path="res://assets/HUD/sliderstriped_sheet2.png" type="Texture" id=18]
 [ext_resource path="res://CountdownSlider.gd" type="Script" id=19]
 [ext_resource path="res://assets/Inter/static/Inter-SemiBold.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://assets/HUD/musicnote.png" type="Texture" id=21]
 
 [sub_resource type="Animation" id=4]
 resource_name = "EndScene"
@@ -54,6 +54,21 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "Nansen"
 length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Character/Nansen:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 540, 1178.47 ), Vector2( 540, 1152.78 ), Vector2( 540, 1178.47 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Nansen30Score"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Character/Nansen:position")
 tracks/0/interp = 2
@@ -516,6 +531,61 @@ tracks/7/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=23]
+resource_name = "MusicNote"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Arrow/MusicNote:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Arrow/MusicNote:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Arrow/MusicNote:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Arrow/MusicNote:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 90.6099, 33.3274, 0, 0, 0, 0, 768.33, 33.5607 )
@@ -576,6 +646,7 @@ texture = ExtResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/EndScene = SubResource( 4 )
 anims/Nansen = SubResource( 6 )
+anims/Nansen30Score = SubResource( 22 )
 anims/RESET = SubResource( 5 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
@@ -591,6 +662,11 @@ autoplay = "Bopping"
 anims/Bopping = SubResource( 11 )
 anims/CountdownProgress = SubResource( 13 )
 anims/RESET = SubResource( 12 )
+
+[node name="AnimationPlayer5" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Slider/Slider/HitboxPath/HitboxSpawnLocation")
+anims/MusicNote = SubResource( 23 )
+anims/RESET = SubResource( 24 )
 
 [node name="Slider" type="Node2D" parent="."]
 position = Vector2( 0, 167.09 )
@@ -690,7 +766,16 @@ position = Vector2( 163.985, 80.0864 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Slider/Slider/Arrow"]
+position = Vector2( 0, -13.173 )
+scale = Vector2( 0.863958, 0.863958 )
 texture = ExtResource( 4 )
+
+[node name="MusicNote" type="Sprite" parent="Slider/Slider/Arrow"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -0.54747, 71.9576 )
+rotation = 0.000342788
+texture = ExtResource( 21 )
+offset = Vector2( -3.5, -2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slider/Slider/Arrow"]
 position = Vector2( 0, 24.2841 )
@@ -702,9 +787,9 @@ wait_time = 3.0
 [node name="CountdownTimer5sec" type="Label" parent="Slider"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -130.0
-margin_top = 967.0
+margin_top = 942.853
 margin_right = 1216.0
-margin_bottom = 1163.0
+margin_bottom = 1138.85
 rect_pivot_offset = Vector2( 672.799, 87.7539 )
 custom_fonts/font = SubResource( 18 )
 text = "5"
@@ -732,33 +817,6 @@ texture = ExtResource( 10 )
 [node name="Ollebolle" type="Sprite" parent="HUD"]
 position = Vector2( 378.015, 143.163 )
 texture = ExtResource( 14 )
-
-[node name="HUDGame" type="TextureRect" parent="HUD"]
-visible = false
-
-[node name="ScoreTimer" type="Sprite" parent="HUD/HUDGame"]
-position = Vector2( 540, 2203.45 )
-texture = ExtResource( 13 )
-
-[node name="Timer" type="Label" parent="HUD/HUDGame"]
-margin_left = 771.5
-margin_top = 2264.16
-margin_right = 802.5
-margin_bottom = 2278.16
-rect_scale = Vector2( 6, 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "0:30"
-
-[node name="Score" type="Label" parent="HUD/HUDGame"]
-margin_left = 176.113
-margin_top = 2264.16
-margin_right = 193.113
-margin_bottom = 2278.16
-rect_scale = Vector2( 6, 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "10"
-align = 1
-valign = 1
 
 [node name="HUDStandby" type="TextureRect" parent="HUD"]
 margin_right = 40.0

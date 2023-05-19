@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.PNG-0e0fa9ad6b6ab832dae45c6c26e984fa.stex"
+path="res://.import/musicnote.png-9419a801b156573a6adde5c11ab1400e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/background.PNG"
-dest_files=[ "res://.import/background.PNG-0e0fa9ad6b6ab832dae45c6c26e984fa.stex" ]
+source_file="res://assets/HUD/musicnote.png"
+dest_files=[ "res://.import/musicnote.png-9419a801b156573a6adde5c11ab1400e.stex" ]
 
 [params]
 
