@@ -8,6 +8,7 @@ var highscore = 0 setget set_highscore
 onready var hudStandby := $HUD/HUDStandby
 #the time in which the game is in-game
 onready var countdownTimer := $CountdownTimer
+onready var collisionTimer := $Slider/CollisionTimer
 #the time for the end screen
 onready var endTimer := $End/EndTimer
 onready var animations := $AnimationPlayer
@@ -29,6 +30,9 @@ func _ready():
 	hitbox_spawn_location = $Slider/Slider/HitboxPath/HitboxSpawnLocation
 	#the game starts when the score is 0, so it has to be <0 during standby
 	self.score = -10
+	$Character/DanceSprites.hide()
+	$Character/NansenSprites.show()
+	$Character/NansenSprites.play("standby")
 
 #a function which is called every frame
 func _process(_delta: float) -> void:
@@ -90,6 +94,9 @@ func set_score(s_value):
 		hudStandby.hide()
 		animations4.play("RESET")
 		animations4.play("CountdownProgress")
+		$Character/NansenSprites.hide()
+		$Character/DanceSprites.show()
+		
 		
 #The highscore value for the end screen
 func set_highscore(hs_value):
@@ -98,11 +105,15 @@ func set_highscore(hs_value):
 #when the arrow leaves the hitbox, restart the timer
 func _on_Hitbox_area_exited(_area: Area2D) -> void:
 	animations2.play("RESET")
+	collisionTimer.stop()
 
 #when the in-game is over
 func _on_CountdownTimer_timeout() -> void:
 	endTimer.start()
 	endTimer.one_shot = true
+	$Character/NansenSprites.show()
+	$Character/NansenSprites.play("curtsey")
+	$Character/DanceSprites.hide()
 	#sets the user's final score and displays it
 	$End/EndContainer/FinalScore.set_text(str(self.score))
 	animations.play("EndScene")
@@ -122,3 +133,4 @@ func _on_EndTimer_timeout() -> void:
 	endTimer.one_shot = false
 	hudStandby.show()
 	animations4.play("RESET")
+	$Character/NansenSprites.play("standby")
