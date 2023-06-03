@@ -22,6 +22,7 @@ onready var fiveSecondsLeft := $Slider/CountdownTimer5sec
 onready var between := $Slider/Slider/HitboxPath/HitboxSpawnLocation/Hitbox/Between
 onready var middle := $Slider/Slider/HitboxPath/HitboxSpawnLocation/Hitbox/Middle
 onready var scoreIncrease := $Slider/ScoreIncrease
+onready var standbyAnimations := $Character/NansenPuppet/AnimationPlayer
 
 
 func _ready():
@@ -31,8 +32,9 @@ func _ready():
 	#the game starts when the score is 0, so it has to be <0 during standby
 	self.score = -10
 	$Character/DanceSprites.hide()
-	$Character/NansenSprites.show()
-	$Character/NansenSprites.play("standby")
+	$Character/NansenPuppet.show()
+	$Character/NansenSprites.hide()
+	
 
 #a function which is called every frame
 func _process(_delta: float) -> void:
@@ -94,8 +96,8 @@ func set_score(s_value):
 		hudStandby.hide()
 		animations4.play("RESET")
 		animations4.play("CountdownProgress")
-		$Character/NansenSprites.hide()
 		$Character/DanceSprites.show()
+		$Character/NansenPuppet.hide()
 		
 		
 #The highscore value for the end screen
@@ -133,4 +135,5 @@ func _on_EndTimer_timeout() -> void:
 	endTimer.one_shot = false
 	hudStandby.show()
 	animations4.play("RESET")
-	$Character/NansenSprites.play("standby")
+	$Character/NansenSprites.hide()
+	$Character/NansenPuppet.show()

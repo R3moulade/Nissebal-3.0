@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/Characters/1x/closedeyes.png" type="Texture" id=1]
 [ext_resource path="res://assets/Characters/1x/braid.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/Characters/1x/clenchedhand2.png" type="Texture" id=17]
 [ext_resource path="res://assets/Characters/1x/sleevefront.png" type="Texture" id=18]
 [ext_resource path="res://assets/Characters/1x/clenchedhand.png" type="Texture" id=19]
+[ext_resource path="res://NansenPuppet.gd" type="Script" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle1"
@@ -66,10 +67,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 8.12487, -9.4774, 9.31256, -9.91089, 4.29934, -2.00315 ]
+"values": [ 0.0, 8.12487, -9.4774, 9.31256, -9.91089, 4.29934, -2.00315, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Head:rotation_degrees")
@@ -102,10 +103,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.4, 0.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.447815, -93.5516 ) ]
+"values": [ Vector2( 0, -73 ), Vector2( 0, -73 ), Vector2( 0.447815, -93.5516 ), Vector2( 0.447815, -93.5516 ), Vector2( 0, -73 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Head/Face/ArrowEyes:visible")
@@ -615,10 +616,34 @@ tracks/36/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1.24 ), Vector2( 1, 1.24 ), Vector2( 1, 1 ) ]
 }
+tracks/37/type = "value"
+tracks/37/path = NodePath("LFrontSleeve:self_modulate")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Dress/LSleeve/LArm:visible")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle3"
-length = 5.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 2
@@ -641,7 +666,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.6, 0.8, 0.9, 1, 1.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.447815, -93.5516 ), Vector2( 0.447815, -93.5516 ), Vector2( 0.447815, -44.52 ), Vector2( 0.447815, -112.234 ), Vector2( 0.447815, -116.433 ), Vector2( 0.447815, -119.702 ), Vector2( 0.447815, -68.8316 ), Vector2( 0.447815, -93.5516 ) ]
+"values": [ Vector2( 0.448, -73.24 ), Vector2( 0.447815, -93.5516 ), Vector2( 0.447815, -44.52 ), Vector2( 0.447815, -112.234 ), Vector2( 0.447815, -116.433 ), Vector2( 0.447815, -119.702 ), Vector2( 0.447815, -68.8316 ), Vector2( 0.448, -73.24 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Dress:position")
@@ -674,10 +699,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, true ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Dress/LSleeve/LArm:visible")
@@ -686,10 +711,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, true ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("LFrontSleeve:self_modulate")
@@ -713,7 +738,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -98.7296, 148.62 ), Vector2( -90.1709, 207.192 ), Vector2( -121.196, 147.511 ), Vector2( -161.54, 71.9873 ), Vector2( -145.893, 73.0628 ), Vector2( -127.921, 111.332 ), Vector2( -98.7296, 148.62 ) ]
+"values": [ Vector2( -87.0995, 140.98 ), Vector2( -92.0995, 206.98 ), Vector2( -119.1, 147.98 ), Vector2( -159.1, 74.9798 ), Vector2( -143.099, 73.9798 ), Vector2( -116.1, 101.98 ), Vector2( -87.0995, 140.98 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("LFrontSleeve/LFrontArm:rotation_degrees")
@@ -722,10 +747,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 85.8285, 46.6096, 100.165, 153.72, 108.459, 85.8285 ]
+"values": [ 97.7375, 38.9622, 101.726, 159.633, 138.376, 107.328, 97.7375 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("LFrontSleeve:visible")
@@ -918,6 +943,102 @@ tracks/24/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 11.3762, 11.3762, -7.44309, -7.44309, 19.0612, 19.0612, -11.7354, 0.0 ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("LFrontSleeve/LFrontArm/LClenchedHand:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("LFrontSleeve/LFrontArm/LHand:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Head/Face/OpenEyes:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Head/Face/OpenEyes:scale")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.2 ), Vector2( 1, 0.2 ), Vector2( 1, 1 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Head/Face/ArrowEyes:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Head/Face/ArrowEyes:scale")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.480001 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.480001 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("LFrontSleeve/LFrontArm:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("RFrontSleeve/RFrontArm:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -1328,7 +1449,7 @@ tracks/33/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/34/type = "value"
 tracks/34/path = NodePath("Dress/RSleeve/RArm:position")
@@ -1340,7 +1461,7 @@ tracks/34/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 103.213, 143.241 ) ]
+"values": [ Vector2( 106.213, 142.241 ) ]
 }
 tracks/35/type = "value"
 tracks/35/path = NodePath("Dress/RSleeve/RArm:rotation_degrees")
@@ -1520,7 +1641,7 @@ tracks/49/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/50/type = "value"
 tracks/50/path = NodePath("Head/Face/ClosedEyes:scale")
@@ -1628,7 +1749,7 @@ tracks/58/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/59/type = "value"
 tracks/59/path = NodePath("LFrontSleeve:self_modulate")
@@ -1664,7 +1785,7 @@ tracks/61/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -14.6824 ]
+"values": [ 0.0 ]
 }
 tracks/62/type = "value"
 tracks/62/path = NodePath("LLeg:rotation_degrees")
@@ -1676,7 +1797,7 @@ tracks/62/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 15.8698 ]
+"values": [ 0.0 ]
 }
 tracks/63/type = "value"
 tracks/63/path = NodePath("Braids/LBraid:rotation_degrees")
@@ -1690,10 +1811,32 @@ tracks/63/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/64/type = "value"
+tracks/64/path = NodePath("LFrontSleeve/LFrontArm:visible")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/65/type = "value"
+tracks/65/path = NodePath("RFrontSleeve/RFrontArm:visible")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
-[node name="NansenPuppet" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="NansenPuppet" type="Sprite"]
 
 [node name="DressShadow" type="Sprite" parent="."]
 position = Vector2( 2.76523, 6.27722 )
@@ -1702,14 +1845,12 @@ offset = Vector2( 0.544495, 120.078 )
 
 [node name="LLeg" type="Sprite" parent="."]
 position = Vector2( -77.5241, 243.21 )
-rotation = 0.276979
 texture = ExtResource( 10 )
 offset = Vector2( -86.5309, 208.786 )
 flip_h = true
 
 [node name="RLeg" type="Sprite" parent="."]
 position = Vector2( 85.6519, 244.707 )
-rotation = -0.256257
 texture = ExtResource( 10 )
 offset = Vector2( 82.2144, 207.723 )
 
@@ -1725,7 +1866,6 @@ texture = ExtResource( 12 )
 offset = Vector2( -45.4266, 72.2864 )
 
 [node name="LArm" type="Sprite" parent="Dress/LSleeve"]
-visible = false
 position = Vector2( -97.3068, 134.732 )
 texture = ExtResource( 8 )
 offset = Vector2( -51.762, 48.9532 )
@@ -1749,7 +1889,7 @@ offset = Vector2( 43.3744, 75.4997 )
 flip_h = true
 
 [node name="RArm" type="Sprite" parent="Dress/RSleeve"]
-position = Vector2( 103.213, 143.241 )
+position = Vector2( 106.213, 142.241 )
 texture = ExtResource( 8 )
 offset = Vector2( 47.6605, 45.3226 )
 flip_h = true
@@ -1797,6 +1937,7 @@ texture = ExtResource( 7 )
 texture = ExtResource( 6 )
 
 [node name="ClosedEyes" type="Sprite" parent="Head/Face"]
+visible = false
 position = Vector2( 0, 2.96016 )
 texture = ExtResource( 1 )
 
@@ -1827,6 +1968,7 @@ offset = Vector2( 52.2865, 26.7474 )
 flip_h = true
 
 [node name="FlatBraid" type="Sprite" parent="."]
+visible = false
 position = Vector2( 170.311, -111.069 )
 rotation = -0.398481
 texture = ExtResource( 11 )
@@ -1848,7 +1990,7 @@ flip_h = true
 
 [node name="RHand" type="Sprite" parent="RFrontSleeve/RFrontArm"]
 position = Vector2( 102.214, 95.9479 )
-rotation = 0.397405
+rotation = 0.397406
 texture = ExtResource( 9 )
 offset = Vector2( 42.3429, 29.7948 )
 flip_h = true
@@ -1895,9 +2037,15 @@ modulate = Color( 1, 1, 1, 0.517647 )
 position = Vector2( 0.973877, 4.12958 )
 texture = ExtResource( 4 )
 offset = Vector2( -0.973877, -4.12958 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle1 = SubResource( 1 )
 anims/Idle2 = SubResource( 2 )
 anims/Idle3 = SubResource( 4 )
 anims/RESET = SubResource( 3 )
+script = ExtResource( 20 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_AnimationPlayer_animation_finished"]

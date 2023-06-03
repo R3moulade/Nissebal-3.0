@@ -11,9 +11,6 @@ onready var animations = frames.get_animation_names()
 func _ready() -> void:
 	randomize()
 
-func _process(delta: float) -> void:
-	pass
-
 func _on_CollisionTimer_timeout() -> void:
 	#randi() return 2^32 - 1 
 	var animation_id = randi() % animations.size()
@@ -23,6 +20,3 @@ func _on_CollisionTimer_timeout() -> void:
 		flip_h = true
 	else:
 		flip_h = false
-
-	if animation == "ballerina":
-		pass
